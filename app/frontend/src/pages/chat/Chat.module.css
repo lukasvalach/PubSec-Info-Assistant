@@ -9,16 +9,23 @@
 }
 
 .chatRoot {
-    flex: 1;
     display: flex;
+    justify-content: center;
+    height: 90%;
+    background-color: #ffff;
 }
 
 .chatContainer {
-    flex: 1;
+    /* flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 100%; */
+    /* display: block;
+    width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .chatEmptyState {
@@ -32,17 +39,21 @@
 }
 
 .chatEmptyStateTitle {
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 10px;
 }
 
 .chatEmptyObjectives {
-    padding-left: 160px;
-    padding-right: 160px;
+    /* padding-left: 160px;
+    padding-right: 160px; */
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
+    max-width: 1000px;
+    line-height: 20px;
+    color: #1b2559;
+    padding-top: 2rem;
 }
 
 .chatEmptyObjectivesList {
@@ -51,14 +62,16 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 50px;
-    padding-top: 30px;
+    padding-top: 50px;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
 .chatEmptyObjectivesListItem {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    width: 300px;
 }
 
 .chatEmptyObjectivesListItemText {
@@ -106,29 +119,26 @@
     margin-bottom: 20px;
 }
 
-.chatInput {
-    position: sticky;
-    bottom: 0;
-    flex: 0 0 100px;
-    padding-top: 12px;
-    padding-bottom: 24px;
-    padding-left: 24px;
-    padding-right: 24px;
-    width: 100%;
-    max-width: 1028px;
-    background: #f2f2f2;
-}
-
 .chatAnalysisPanel {
     flex: 1;
     overflow-y: auto;
     max-height: 89vh;
     margin-left: 20px;
     margin-right: 20px;
+    min-width: 50%;
+
+    .ms-Pivot-text {
+        font-family: "Montserrat", sans-serif !important;
+    }
 }
 
 .chatSettingsSeparator {
     margin-top: 15px;
+
+    span {
+        font-size: 14px;
+        opacity: 40%;
+    }
 }
 
 .loadingLogo {
@@ -143,4 +153,13 @@
 .commandButton {
     margin-right: 20px;
     margin-bottom: 20px;
+}
+
+.customizePanel {
+    height: 85%;
+
+    label {
+        font-family: "Montserrat", sans-serif !important;
+        color: #011e3d;
+    }
 }

@@ -1,7 +1,7 @@
 /* Copyright (c) Microsoft Corporation.
    Licensed under the MIT license. */
 
-   .container {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,32 +10,27 @@
 
 .options {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     gap: 6px;
     width: 80%;
+
+    label {
+        font-family: "Montserrat", sans-serif !important;
+        color: #011e3d;
+    }
 }
 
 .refresharea {
     display: flex;
-    flex-direction: row;
-    gap: 6px;
+    align-items: center;
     cursor: pointer;
-    height: 30px;
 }
 
-.refresharea:hover {
-    background-color: lightgrey;
-}
-
+.refreshtext,
 .refreshicon {
-    margin-top: 3px;
-    margin-left: 3px;
-}
-
-.refreshtext {
-    margin-top: 3px;
-    margin-right: 5px;
-
+    margin-top: 30px;
+    margin-right: 3px;
+    font-size: 13px;
 }
 
 .resultspanel {

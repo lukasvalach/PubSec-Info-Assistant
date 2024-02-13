@@ -1,0 +1,123 @@
+{
+    "chat": {
+        "title": "Chatujte se svými daty!",
+        "intro": "Rychlé, přesné a ucelené informace na základě vašich interních dokumentů. Databot odpoví na vaše otázky, poradí a připraví výstupy na míru dle vašeho zadání. Komunikujte s ním přirozeně jako s kolegou či svým asistentem.",
+        "emptyState": {
+            "simple": {
+                "title": "Jednoduché",
+                "text": "Nahrajete dokumenty do systému a ptáte se přirozeným jazykem na to, co potřebujete vědět."
+            },
+            "relevant": {
+                "title": "Relevantní",
+                "text": "Odpovědi na vaše otázky jsou vždy správné, protože jsou založeny na obsahu vašich interních dokumentů."
+            },
+            "safe": {
+                "title": "Bezpečné",
+                "text": "Vaše data jsou v bezpečí. Zůstávají totiž u vás a jsou využívána jen pro vaše potřeby."
+            }
+        },
+        "writeQuestion": "Napište svou otázku..."
+    },
+    "customize": {
+        "title": "Přizpůsobit",
+        "panel": {
+            "title": "Konfigurace odpovědí",
+            "agentSelection": "Výběr agenta",
+            "agentSelectionMultiple": "Výběr agenta (Vyberte více agentů)",
+            "upload": "Vyberte agenta pro nahrání dokumentů",
+            "uploadMultiple": "Vyberte agenta pro filtrování vyhledávání",
+            "newFolder": "Vytvořit nový adresář",
+            "selectAll": "Vybrat vše",
+            "folders": "Adresáře",
+            "documentRetrieve": "Získat z vyhledávání tento počet dokumentů",
+            "suggestQuestions": "Navrhování doplňujících otázek",
+            "responseLength": "Délka odpovědi",
+            "conversationType": "Typ konverzace",
+            "answers": {
+                "succinct": "Stručný",
+                "standard": "Standardní",
+                "thorough": "Důkladné"
+            },
+            "conversation": {
+                "creative": "Kreativní",
+                "balanced": "Vyvážený",
+                "precise": "Přesný"
+            },
+            "tags": "Štítky",
+            "tagFilter": "Štítky pro filtrování dokumentů.",
+            "tagUpload": "Štítky k připojení k každému níže nahrávanému dokumentu.",
+            "userPersona": "Uživatel",
+            "systemPersona": "Persona systému",
+            "information": "Informace"
+        }
+    },
+    "info": {
+        "azureOpenAI": {
+            "title": "Azure OpenAI",
+            "instance": "Instance",
+            "gptDeploymentName": "GPT Deployment Name",
+            "gptModelName": "GPT Model Name",
+            "gptModelVersion": "GPT Model Version",
+            "embeddingsDeploymentName": "Embeddings Deployment Name",
+            "embeddingsModelName": "Embeddings Model Name",
+            "embeddingsModelVersion": "Embeddings Model Version",
+            "openSourceEmbeddings": "Open Source Embeddings",
+            "embeddingsModel": "Embeddings Model"
+        },
+        "azureAISearch": {
+            "title": "Azure AI Vyhledávání",
+            "serviceName": "Název služby",
+            "indexName": "Název indexu"
+        },
+        "systemConfiguration": {
+            "title": "Konfigurace systému",
+            "systemLanguage": "Jazyk systému"
+        }
+    },
+    "raiPanel": {
+        "customize": "Přizpůsobit",
+        "update": "Aktualizovat"
+    },
+    "analyst": "Analytik",
+    "assistant": "Asistent",
+    "agents": "Moji agenti",
+    "agentManagement": "Správa agentů",
+    "uploadStatus": "Stav nahrávání",
+    "dropZone": "Své soubory můžete posílat sem nebo",
+    "browseZone": "Zvolte kliknutí pro procházení",
+    "uploadDrop": "Nahráno v posledních:",
+    "timeRange": "Konec časového rozmezí",
+    "4hours": "4 hodiny",
+    "12hours": "12 hodin",
+    "24hours": "24 hodin",
+    "7days": "7 dní",
+    "30days": "30 dní",
+    "fileStates": "Stavy souborů",
+    "all": "Všechny",
+    "complete": "Dokončeno",
+    "error": "Chyba",
+    "processing": "Zpracovává se",
+    "queued": "Ve frontě",
+    "skipped": "Přeskočeno",
+    "refresh": "Aktualizovat",
+    "getStatus": "Získávání stavů souborů",
+    "clearChat": "Smazat chat",
+    "analysisPanel": {
+        "citation": "Citace",
+        "supportingContent": "Podpůrný obsah",
+        "loading": "Načítání...",
+        "thoughtProcess": "Myšlenkový proces",
+        "fileName": "Název souboru",
+        "fileUri": "Souborový URI",
+        "title": "Titul",
+        "section": "Sekce",
+        "pageNumbers": "Číslo stránky(í)",
+        "tokenCount": "Počet tokenů",
+        "content": "Obsah",
+        "documentSection": "Sekce dokumentů"
+    },
+    "folderName": "Název složky",
+    "createFolder": "Vytvořit složku",
+    "emptyFolderName": "Prosím zadejte název složky",
+    "you": "Vy"
+}

@@ -1,47 +1,49 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import { useState } from "react";
-import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { Stack } from "@fluentui/react";
-import { DocumentsDetailList, IDocument } from "./DocumentsDetailList";
 import { ArrowClockwise24Filled } from "@fluentui/react-icons";
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from "@fluentui/react/lib/Dropdown";
 import { animated, useSpring } from "@react-spring/web";
-import { getAllUploadStatus, FileUploadBasicStatus, GetUploadStatusRequest, FileState } from "../../api";
+import { useState } from "react";
+import { FileState, FileUploadBasicStatus, GetUploadStatusRequest, getAllUploadStatus } from "../../api";
+import { DocumentsDetailList, IDocument } from "./DocumentsDetailList";
 
+import { useTranslation } from "react-i18next";
 import styles from "./FileStatus.module.css";
 
-const dropdownTimespanStyles: Partial<IDropdownStyles> = { dropdown: { width: 150 } };
-const dropdownFileStateStyles: Partial<IDropdownStyles> = { dropdown: { width: 200 } };
-
-const dropdownTimespanOptions = [
-    { key: 'Time Range', text: 'End time range', itemType: DropdownMenuItemType.Header },
-    { key: '4hours', text: '4 hours' },
-    { key: '12hours', text: '12 hours' },
-    { key: '24hours', text: '24 hours' },
-    { key: '7days', text: '7 days' },
-    { key: '30days', text: '30 days' },
-  ];
-
-const dropdownFileStateOptions = [
-    { key: 'FileStates', text: 'File States', itemType: DropdownMenuItemType.Header },
-    { key: FileState.All, text: 'All' },
-    { key: FileState.Complete, text: 'Completed' },
-    { key: FileState.Error, text: 'Error' },
-    { key: FileState.Processing, text: 'Processing' },
-    { key: FileState.Queued, text: 'Queued' },
-    { key: FileState.Skipped, text: 'Skipped'},
-  ];
+const dropdownTimespanStyles: Partial<IDropdownStyles> = { dropdown: { width: 250, marginRight: 30 } };
+const dropdownFileStateStyles: Partial<IDropdownStyles> = { dropdown: { width: 250, marginRight: 30 } };
 
 interface Props {
     className?: string;
 }
 
 export const FileStatus = ({ className }: Props) => {
+    const { t } = useTranslation("common");
     const [selectedTimeFrameItem, setSelectedTimeFrameItem] = useState<IDropdownOption>();
     const [selectedFileStateItem, setSelectedFileStateItem] = useState<IDropdownOption>();
     const [files, setFiles] = useState<IDocument[]>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    const dropdownTimespanOptions = [
+        { key: "Time Range", text: t("timeRange"), itemType: DropdownMenuItemType.Header },
+        { key: "4hours", text: t("4hours") },
+        { key: "12hours", text: t("12hours") },
+        { key: "24hours", text: t("24hours") },
+        { key: "7days", text: t("7days") },
+        { key: "30days", text: t("30days") }
+    ];
+
+    const dropdownFileStateOptions = [
+        { key: "FileStates", text: t("fileStates"), itemType: DropdownMenuItemType.Header },
+        { key: FileState.All, text: t("all") },
+        { key: FileState.Complete, text: t("complete") },
+        { key: FileState.Error, text: t("error") },
+        { key: FileState.Processing, text: t("processing") },
+        { key: FileState.Queued, text: t("queued") },
+        { key: FileState.Skipped, text: t("skipped") }
+    ];
 
     const onTimeSpanChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption<any> | undefined): void => {
         setSelectedTimeFrameItem(item);
@@ -81,19 +83,19 @@ export const FileStatus = ({ className }: Props) => {
 
         const request: GetUploadStatusRequest = {
             timeframe: timeframe,
-            state: selectedFileStateItem?.key == undefined ? FileState.All : selectedFileStateItem?.key as FileState
-        }
+            state: selectedFileStateItem?.key == undefined ? FileState.All : (selectedFileStateItem?.key as FileState)
+        };
         const response = await getAllUploadStatus(request);
         const list = convertStatusToItems(response.statuses);
         setIsLoading(false);
         setFiles(list);
-    }
+    };
 
     function convertStatusToItems(fileList: FileUploadBasicStatus[]) {
         const items: IDocument[] = [];
         for (let i = 0; i < fileList.length; i++) {
-            let fileExtension = fileList[i].file_name.split('.').pop();
-            fileExtension = fileExtension == undefined ? 'Folder' : fileExtension.toUpperCase()
+            let fileExtension = fileList[i].file_name.split(".").pop();
+            fileExtension = fileExtension == undefined ? "Folder" : fileExtension.toUpperCase();
             try {
                 items.push({
                     key: fileList[i].id,
@@ -104,10 +106,9 @@ export const FileStatus = ({ className }: Props) => {
                     state_description: fileList[i].state_description,
                     upload_timestamp: fileList[i].start_timestamp,
                     modified_timestamp: fileList[i].state_timestamp,
-                    value: fileList[i].id,
+                    value: fileList[i].id
                 });
-            }
-            catch (e) {
+            } catch (e) {
                 console.log(e);
             }
         }
@@ -115,12 +116,12 @@ export const FileStatus = ({ className }: Props) => {
     }
 
     const FILE_ICONS: { [id: string]: string } = {
-        "csv": 'csv',
-        "docx": 'docx',
-        "pdf": 'pdf',
-        "pptx": 'pptx',
-        "txt": 'txt',
-        "html": 'xsn'
+        csv: "csv",
+        docx: "docx",
+        pdf: "pdf",
+        pptx: "pptx",
+        txt: "txt",
+        html: "xsn"
     };
 
     const animatedStyles = useSpring({
@@ -130,36 +131,36 @@ export const FileStatus = ({ className }: Props) => {
 
     return (
         <div className={styles.container}>
-            <div className={`${styles.options} ${className ?? ""}`} >
-            <Dropdown
-                    label="Uploaded in last:"
-                    defaultSelectedKey='4hours'
+            <div className={`${styles.options} ${className ?? ""}`}>
+                <Dropdown
+                    label={t("uploadDrop")}
+                    defaultSelectedKey="4hours"
                     onChange={onTimeSpanChange}
                     placeholder="Select a time range"
                     options={dropdownTimespanOptions}
                     styles={dropdownTimespanStyles}
                     aria-label="timespan options for file statuses to be displayed"
                 />
-            <Dropdown
-                    label="File State:"
-                    defaultSelectedKey={'ALL'}
+                <Dropdown
+                    label={t("fileStates")}
+                    defaultSelectedKey={"ALL"}
                     onChange={onFileStateChange}
                     placeholder="Select file states"
                     options={dropdownFileStateOptions}
                     styles={dropdownFileStateStyles}
                     aria-label="file state options for file statuses to be displayed"
                 />
-            <div className={styles.refresharea} onClick={onGetStatusClick} aria-label="Refresh displayed file statuses">
-                <ArrowClockwise24Filled className={styles.refreshicon} />
-                <span className={styles.refreshtext}>Refresh</span>
-            </div>
+                <div className={styles.refresharea} onClick={onGetStatusClick} aria-label="Refresh displayed file statuses">
+                    <ArrowClockwise24Filled className={styles.refreshicon} />
+                    <span className={styles.refreshtext}>{t("refresh")}</span>
+                </div>
             </div>
             {isLoading ? (
                 <animated.div style={{ ...animatedStyles }}>
-                     <Stack className={styles.loadingContainer} verticalAlign="space-between">
+                    <Stack className={styles.loadingContainer} verticalAlign="space-between">
                         <Stack.Item grow>
                             <p className={styles.loadingText}>
-                                Getting file statuses
+                                {t("refresh")}
                                 <span className={styles.loadingdots} />
                             </p>
                         </Stack.Item>
@@ -167,7 +168,7 @@ export const FileStatus = ({ className }: Props) => {
                 </animated.div>
             ) : (
                 <div className={styles.resultspanel}>
-                    <DocumentsDetailList items={files == undefined ? [] : files} onFilesSorted={onFilesSorted}/>
+                    <DocumentsDetailList items={files == undefined ? [] : files} onFilesSorted={onFilesSorted} />
                 </div>
             )}
         </div>

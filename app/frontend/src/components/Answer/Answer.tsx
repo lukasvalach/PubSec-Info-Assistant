@@ -1,16 +1,15 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import { useMemo } from "react";
-import { Stack, IconButton } from "@fluentui/react";
+import { IconButton, Stack } from "@fluentui/react";
 import DOMPurify from "dompurify";
+import { useMemo } from "react";
 
 import styles from "./Answer.module.css";
 
 import { AskResponse, getCitationFilePath } from "../../api";
-import { parseAnswerToHtml } from "./AnswerParser";
-import { AnswerIcon } from "./AnswerIcon";
 import { RAIPanel } from "../RAIPanel";
+import { parseAnswerToHtml } from "./AnswerParser";
 
 interface Props {
     answer: AskResponse;
@@ -42,11 +41,10 @@ export const Answer = ({
     return (
         <Stack className={`${styles.answerContainer} ${isSelected && styles.selected}`} verticalAlign="space-between">
             <Stack.Item>
-                <Stack horizontal horizontalAlign="space-between">
-                    <AnswerIcon />
+                <Stack horizontal horizontalAlign="end">
                     <div>
                         <IconButton
-                            style={{ color: "black" }}
+                            style={{ color: "rgba(113, 128, 150, 1)" }}
                             iconProps={{ iconName: "Lightbulb" }}
                             title="Show thought process"
                             ariaLabel="Show thought process"
@@ -54,7 +52,7 @@ export const Answer = ({
                             disabled={!answer.thoughts}
                         />
                         <IconButton
-                            style={{ color: "black" }}
+                            style={{ color: "rgba(113, 128, 150, 1)" }}
                             iconProps={{ iconName: "ClipboardList" }}
                             title="Show supporting content"
                             ariaLabel="Show supporting content"
@@ -100,7 +98,7 @@ export const Answer = ({
                 </Stack.Item>
             )}
             <Stack.Item align="center">
-                <RAIPanel onAdjustClick={onAdjustClick} onRegenerateClick={onRegenerateClick}/>
+                <RAIPanel onAdjustClick={onAdjustClick} onRegenerateClick={onRegenerateClick} />
             </Stack.Item>
         </Stack>
     );

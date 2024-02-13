@@ -1,17 +1,19 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import { useEffect, useState } from "react";
 import { Pivot, PivotItem, Text } from "@fluentui/react";
-import { Label } from '@fluentui/react/lib/Label';
-import { Separator } from '@fluentui/react/lib/Separator';
+import { Label } from "@fluentui/react/lib/Label";
+import { Separator } from "@fluentui/react/lib/Separator";
 import DOMPurify from "dompurify";
+import { useEffect, useState } from "react";
 
 import styles from "./AnalysisPanel.module.css";
 
+import { Box } from "@mui/material";
+import { ActiveCitation, AskResponse, getCitationObj } from "../../api";
 import { SupportingContent } from "../SupportingContent";
-import { AskResponse, ActiveCitation, getCitationObj } from "../../api";
 import { AnalysisPanelTabs } from "./AnalysisPanelTabs";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     className: string;
@@ -28,6 +30,8 @@ const pivotItemDisabledStyle = { disabled: true, style: { color: "grey" } };
 
 export const AnalysisPanel = ({ answer, activeTab, activeCitation, sourceFile, pageNumber, citationHeight, className, onActiveTabChanged }: Props) => {
     const [activeCitationObj, setActiveCitationObj] = useState<ActiveCitation>();
+
+    const { t } = useTranslation("common");
 
     const isDisabledThoughtProcessTab: boolean = !answer.thoughts;
     const isDisabledSupportingContentTab: boolean = !answer.data_points.length;
@@ -51,58 +55,108 @@ export const AnalysisPanel = ({ answer, activeTab, activeCitation, sourceFile, p
         fetchActiveCitationObj();
     }, [activeCitation]);
 
+    const pivotStyles = {
+        linkIsSelected: {
+            selectors: {
+                ":before": {
+                    backgroundColor: "rgba(67, 24, 255, 1)"
+                }
+            },
+            color: "rgba(67, 24, 255, 1)",
+            fontFamily: "Montserrat"
+        }
+    };
     return (
         <Pivot
             className={className}
             selectedKey={activeTab}
             onLinkClick={pivotItem => pivotItem && onActiveTabChanged(pivotItem.props.itemKey! as AnalysisPanelTabs)}
+            styles={pivotStyles}
         >
             <PivotItem
                 itemKey={AnalysisPanelTabs.ThoughtProcessTab}
-                headerText="Thought process"
+                headerText={t("analysisPanel.thoughtProcess")}
                 headerButtonProps={isDisabledThoughtProcessTab ? pivotItemDisabledStyle : undefined}
             >
-                <div className={styles.thoughtProcess} dangerouslySetInnerHTML={{ __html: sanitizedThoughts }}></div>
+                <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    sx={{
+                        backgroundColor: "white",
+                        padding: 7,
+                        outline: "none",
+                        overflowY: "auto",
+                        height: "100%"
+                    }}
+                >
+                    <Box
+                        sx={{
+                            wordBreak: "break-word"
+                        }}
+                        className={styles.thoughtProcess}
+                        dangerouslySetInnerHTML={{ __html: sanitizedThoughts }}
+                    ></Box>
+                </Box>
+
+                {/*  */}
             </PivotItem>
             <PivotItem
                 itemKey={AnalysisPanelTabs.SupportingContentTab}
-                headerText="Supporting content"
-                headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : undefined}
+                headerText={t("analysisPanel.supportingContent")}
+                headerButtonProps={isDisabledSupportingContentTab ? pivotItemDisabledStyle : { styles: { root: { fontFamily: "Montserrat" } } }}
             >
                 <SupportingContent supportingContent={answer.data_points} />
             </PivotItem>
             <PivotItem
                 itemKey={AnalysisPanelTabs.CitationTab}
-                headerText="Citation"
+                headerText={t("analysisPanel.citation")}
                 headerButtonProps={isDisabledCitationTab ? pivotItemDisabledStyle : undefined}
             >
-                <Pivot className={className}>
-                    <PivotItem itemKey="indexedFile" headerText="Document Section">
-                        { activeCitationObj === undefined ? (
-                            <Text>Loading...</Text>
+                <Pivot className={className} styles={pivotStyles}>
+                    <PivotItem itemKey="indexedFile" headerText={t("analysisPanel.documentSection")}>
+                        {activeCitationObj === undefined ? (
+                            <Text>{t("analysisPanel.loading")}</Text>
                         ) : (
-                            <div>
-                            <Separator>Metadata</Separator>
-                            <Label>File Name</Label><Text>{activeCitationObj.file_name}</Text>
-                            <Label>File URI</Label><Text>{activeCitationObj.file_uri}</Text>
-                            <Label>Title</Label><Text>{activeCitationObj.title}</Text>
-                            <Label>Section</Label><Text>{activeCitationObj.section}</Text>
-                            <Label>Page Number(s)</Label><Text>{activeCitationObj.pages?.join(",")}</Text>
-                            <Label>Token Count</Label><Text>{activeCitationObj.token_count}</Text>
-                            <Separator>Content</Separator>
-                            <Label>Content</Label><Text>{activeCitationObj.content}</Text>
+                            <div className={styles.analysisText}>
+                                <Separator className={styles.analysisSeparator}>Metadata</Separator>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.fileName")}</Label>
+                                <Text>{activeCitationObj.file_name}</Text>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.fileUri")}</Label>
+                                <Text>{activeCitationObj.file_uri}</Text>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.title")}</Label>
+                                <Text>{activeCitationObj.title}</Text>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.section")}</Label>
+                                <Text>{activeCitationObj.section}</Text>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.pageNumbers")}</Label>
+                                <Text>{activeCitationObj.pages?.join(",")}</Text>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.tokenCount")}</Label>
+                                <Text>{activeCitationObj.token_count}</Text>
+                                <Separator className={styles.analysisSeparator}>{t("analysisPanel.content")}</Separator>
+                                <Label className={styles.analysisLabel}>{t("analysisPanel.content")}</Label>
+                                <Text>{activeCitationObj.content}</Text>
                             </div>
                         )}
                     </PivotItem>
                     <PivotItem itemKey="rawFile" headerText="Document">
-                        { sourceFileExt === "pdf" ? (
+                        {sourceFileExt === "pdf" ? (
                             //use object tag for pdfs because iframe does not support page numbers
                             <object data={sourceFile + "#page=" + pageNumber} type="application/pdf" width="100%" height={citationHeight} />
-                        ) : ( sourceFileExt === "docx" ? (
-                            <iframe title="Source File" src={'https://view.officeapps.live.com/op/view.aspx?src='+encodeURIComponent(sourceFile as string)+"&action=embedview&wdStartOn="+pageNumber} width="100%" height={citationHeight} />
+                        ) : sourceFileExt === "docx" ? (
+                            <iframe
+                                title="Source File"
+                                src={
+                                    "https://view.officeapps.live.com/op/view.aspx?src=" +
+                                    encodeURIComponent(sourceFile as string) +
+                                    "&action=embedview&wdStartOn=" +
+                                    pageNumber
+                                }
+                                width="100%"
+                                height={citationHeight}
+                            />
                         ) : (
                             <iframe title="Source File" src={sourceFile} width="100%" height={citationHeight} />
-                        )) }
+                        )}
                     </PivotItem>
                 </Pivot>
             </PivotItem>

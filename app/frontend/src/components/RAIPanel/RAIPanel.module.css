@@ -1,6 +1,6 @@
 /* Copyright (c) Microsoft Corporation.
    Licensed under the MIT license. */
-   
+
 .adjustInputContainer {
     display: flex;
     flex-direction: row;
@@ -13,7 +13,7 @@
 .adjustInputText {
     font-size: 12px;
     font-weight: 400;
-    color: rgb(133, 133, 133);
+    color: rgba(27, 37, 89, 1);
     line-height: 22px;
     padding-top: 8px;
     padding-bottom: 8px;

@@ -1,10 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import React, { useEffect, useState } from "react";
-import { Text } from "@fluentui/react";
-import { Label } from '@fluentui/react/lib/Label';
-import { Separator } from '@fluentui/react/lib/Separator';
+import React, { useEffect, useState } from "react";;
 import { getWarningBanner, GetWarningBanner } from "../../api";
 
 import styles from "./WarningBanner.module.css";

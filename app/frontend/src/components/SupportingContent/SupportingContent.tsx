@@ -2,7 +2,6 @@
 // Licensed under the MIT license.
 
 import { parseSupportingContentItem } from "./SupportingContentParser";
-
 import styles from "./SupportingContent.module.css";
 
 interface Props {
@@ -17,7 +16,7 @@ export const SupportingContent = ({ supportingContent }: Props) => {
 
                 return (
                     <li className={styles.supportingContentItem}>
-                        <h4 className={styles.supportingContentItemHeader}>{parsed.title}</h4>
+                        <h6 className={styles.supportingContentItemHeader}>{parsed.title}</h6>
                         <p className={styles.supportingContentItemText}>{parsed.content}</p>
                     </li>
                 );

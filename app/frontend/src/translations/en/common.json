@@ -1,0 +1,123 @@
+{
+    "chat": {
+        "title": "Chat with your data!",
+        "intro": "Fast, accurate and comprehensive information based on your internal documents. Databot will answer your questions, advise you and prepare customized outputs according to your specifications. Communicate with it naturally as with a colleague or your assistant.",
+        "emptyState": {
+            "simple": {
+                "title": "Simple",
+                "text": "You upload documents into the system and ask in natural language what you need to know."
+            },
+            "relevant": {
+                "title": "Relevant",
+                "text": "The answers to your questions are always correct because they are based on the content of your internal documents."
+            },
+            "safe": {
+                "title": "Safe",
+                "text": "Your data is safe. It stays with you and is used only for your needs."
+            }
+        },
+        "writeQuestion": "Write a question..."
+    },
+    "customize": {
+        "title": "Customize",
+        "panel": {
+            "title": "Configuration of answers",
+            "agentSelection": "Selection of an agent",
+            "agentSelectionMultiple": "Selection of an agent (Select multiple agents)",
+            "upload": "Select an agent to upload documents into",
+            "uploadMultiple": "Select an agent to filter the search by",
+            "newFolder": "Create a new folder",
+            "selectAll": "Select All",
+            "folders": "Folders",
+            "documentRetrieve": "Retrieve this many documents from search",
+            "suggestQuestions": "Suggest follow-up questions",
+            "responseLength": "Response length",
+            "conversationType": "Conversation Type",
+            "answers": {
+                "succinct": "Succinct",
+                "standard": "Standard",
+                "thorough": "Thorough"
+            },
+            "conversation": {
+                "creative": "Creative",
+                "balanced": "Balanced",
+                "precise": "Precise"
+            },
+            "tags": "Tags",
+            "tagFilter": "Tags to filter documents by.",
+            "tagUpload": "Tags to append to each document uploaded below.",
+            "userPersona": "User Persona",
+            "systemPersona": "System Persona",
+            "information": "Information"
+        }
+    },
+    "info": {
+        "azureOpenAI": {
+            "title": "Azure OpenAI",
+            "instance": "Instance",
+            "gptDeploymentName": "GPT Deployment Name",
+            "gptModelName": "GPT Model Name",
+            "gptModelVersion": "GPT Model Version",
+            "embeddingsDeploymentName": "Embeddings Deployment Name",
+            "embeddingsModelName": "Embeddings Model Name",
+            "embeddingsModelVersion": "Embeddings Model Version",
+            "openSourceEmbeddings": "Open Source Embeddings",
+            "embeddingsModel": "Embeddings Model"
+        },
+        "azureAISearch": {
+            "title": "Azure AI Search",
+            "serviceName": "Service Name",
+            "indexName": "Index Name"
+        },
+        "systemConfiguration": {
+            "title": "System Configuration",
+            "systemLanguage": "System Language"
+        }
+    },
+    "raiPanel": {
+        "customize": "Customize",
+        "update": "Update"
+    },
+    "analyst": "Analyst",
+    "assistant": "Assistant",
+    "agents": "Agents",
+    "agentManagement": "Agent management",
+    "uploadStatus": "Upload status",
+    "dropZone": "Drop your files here",
+    "browseZone": "Select a click to browse",
+    "uploadDrop": "Uploaded in last:",
+    "timeRange": "End time range",
+    "4hours": "4 hours",
+    "12hours": "12 hours",
+    "24hours": "24 hours",
+    "7days": "7 days",
+    "30days": "30 days",
+    "fileStates": "File States",
+    "all": "All",
+    "complete": "Completed",
+    "error": "Error",
+    "processing": "Processing",
+    "queued": "Queued",
+    "skipped": "Skipped",
+    "refresh": "Refresh",
+    "getStatus": "Getting file statuses",
+    "clearChat": "Clear chat",
+    "analysisPanel": {
+        "citation": "Citation",
+        "supportingContent": "Supporting content",
+        "loading": "Loading...",
+        "thoughtProcess": "Thought process",
+        "fileName": "File Name",
+        "fileUri": "File URI",
+        "title": "Title",
+        "section": "Section",
+        "pageNumbers": "Page Number(s)",
+        "tokenCount": "Token Count",
+        "content": "Content",
+        "documentSection": "Document Section"
+    },
+    "folderName": "Folder name",
+    "createFolder": "Create folder",
+    "emptyFolderName": "Please enter a folder name",
+    "you": "You"
+}
