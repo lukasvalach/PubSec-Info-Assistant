@@ -14,6 +14,7 @@ import { Avatar, Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Approaches, AskResponse, ChatRequest, ChatTurn, chatApi } from "../../api";
 import phone from "../../assets/phone.svg";
+import orange from "../../assets/orange.svg";
 import { AnalysisPanel, AnalysisPanelTabs } from "../../components/AnalysisPanel";
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { FolderPicker } from "../../components/FolderPicker";
@@ -245,7 +246,7 @@ const Chat = () => {
             <div className={styles.container}>
                 {!!lastQuestionRef.current && (
                     <Box display="flex">
-                        <Avatar src="../src/assets/orange.svg" sx={{ marginLeft: 6, mr: 1.5 }}></Avatar>
+                        <Avatar src={orange} sx={{ marginLeft: 6, mr: 1.5 }}></Avatar>
                         <Box display={"block"}>
                             <Typography component="div" fontSize={14} fontWeight="bold">
                                 Databot
@@ -323,7 +324,7 @@ const Chat = () => {
                                             </Typography>
                                             <Box sx={{ display: "flex" }}>
                                                 <div className={styles.chatMessageGpt}>
-                                                    <Avatar src="../src/assets/orange.svg" sx={{ marginRight: 2 }}></Avatar>
+                                                    <Avatar src={orange} sx={{ marginRight: 2 }}></Avatar>
                                                     <Answer
                                                         key={index}
                                                         answer={answer[1]}

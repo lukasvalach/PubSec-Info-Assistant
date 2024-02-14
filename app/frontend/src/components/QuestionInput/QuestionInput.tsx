@@ -5,14 +5,8 @@ import { Stack, TextField } from "@fluentui/react";
 import { Broom28Filled, Send24Regular } from "@fluentui/react-icons";
 import { useState } from "react";
 import { RAIPanel } from "../RAIPanel";
-
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import styles from "./QuestionInput.module.css";
-
 import { useTranslation } from "react-i18next";
-import dpLogo from "../../assets/direct-logo.svg";
-import v1Logo from "../../assets/viable-logo.svg";
 
 interface Props {
     onSend: (question: string) => void;
