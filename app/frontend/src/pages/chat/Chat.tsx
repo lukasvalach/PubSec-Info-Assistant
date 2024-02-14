@@ -342,20 +342,20 @@ const Chat = () => {
                                     </div>
                                 ))}
                                 {isLoading && (
-                                    <>
+                                    <Box sx={{ minWidth: 1000 }}>
                                         <UserChatMessage message={lastQuestionRef.current} />
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerLoading />
                                         </div>
-                                    </>
+                                    </Box>
                                 )}
                                 {error ? (
-                                    <>
+                                    <Box sx={{ minWidth: 1000 }}>
                                         <UserChatMessage message={lastQuestionRef.current} />
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerError error={error.toString()} onRetry={() => makeApiRequest(lastQuestionRef.current)} />
                                         </div>
-                                    </>
+                                    </Box>
                                 ) : null}
                                 <div ref={chatMessageStreamEnd} />
                             </div>

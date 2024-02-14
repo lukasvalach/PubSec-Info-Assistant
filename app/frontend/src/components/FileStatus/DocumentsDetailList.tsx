@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
+import { DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, TooltipHost } from "@fluentui/react";
 import { useState } from "react";
-import { DetailsList, DetailsListLayoutMode, SelectionMode, IColumn, Selection, Label, BaseSelectedItemsList, mergeStyleSets } from "@fluentui/react";
-import { TooltipHost } from "@fluentui/react";
 
+import { useTranslation } from "react-i18next";
 import styles from "./DocumentsDetailList.module.css";
 
 export interface IDocument {
@@ -25,6 +25,8 @@ interface Props {
 }
 
 export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
+    const { t } = useTranslation("common");
+
     const onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
         const newColumns: IColumn[] = columns.slice();
         const currColumn: IColumn = newColumns.filter(currCol => column.key === currCol.key)[0];
@@ -59,7 +61,7 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
     const [columns, setColumns] = useState<IColumn[]>([
         {
             key: "column1",
-            name: "File Type",
+            name: t("file.type"),
             className: styles.fileIconCell,
             iconClassName: styles.fileIconHeaderIcon,
             ariaLabel: "Column operations for File type, Press to sort on File type",
@@ -81,7 +83,7 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
         },
         {
             key: "column2",
-            name: "Name",
+            name: t("file.name"),
             fieldName: "name",
             minWidth: 210,
             maxWidth: 350,
@@ -95,7 +97,7 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
         },
         {
             key: "column3",
-            name: "State",
+            name: t("file.state"),
             fieldName: "state",
             minWidth: 70,
             maxWidth: 90,
@@ -112,7 +114,7 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
         },
         {
             key: "column4",
-            name: "Submitted On",
+            name: t("file.submitted"),
             fieldName: "upload_timestamp",
             minWidth: 70,
             maxWidth: 90,
@@ -128,7 +130,7 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
         },
         {
             key: "column5",
-            name: "Last Updated",
+            name: t("file.lastUpdate"),
             fieldName: "modified_timestamp",
             minWidth: 70,
             maxWidth: 90,
@@ -147,10 +149,11 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
         }
     ]);
 
-
     return (
         <div>
-            <span className={styles.footer}>{(("(" + items.length) as string) + ") records."}</span>
+            <span className={styles.footer}>
+                {(("(" + items.length) as string) + ") "} {" " + t("file.records") + "."}
+            </span>
             <DetailsList
                 items={items}
                 compact={true}
@@ -161,9 +164,10 @@ export const DocumentsDetailList = ({ items, onFilesSorted }: Props) => {
                 layoutMode={DetailsListLayoutMode.justified}
                 isHeaderVisible={true}
                 onItemInvoked={onItemInvoked}
-                
             />
-            <span className={styles.footer}>{(("(" + items.length) as string) + ") records."}</span>
+            <span className={styles.footer}>
+                {(("(" + items.length) as string) + ") "} {" " + t("file.records") + "."}
+            </span>
         </div>
     );
 };

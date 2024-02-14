@@ -45,7 +45,7 @@
             },
             "tags": "Štítky",
             "tagFilter": "Štítky pro filtrování dokumentů.",
-            "tagUpload": "Štítky k připojení k každému níže nahrávanému dokumentu.",
+            "tagUpload": "Štítky k připojení ke každému níže nahrávanému dokumentu.",
             "userPersona": "Uživatel",
             "systemPersona": "Persona systému",
             "information": "Informace"
@@ -119,5 +119,13 @@
     "folderName": "Název složky",
     "createFolder": "Vytvořit složku",
     "emptyFolderName": "Prosím zadejte název složky",
-    "you": "Vy"
+    "you": "Vy",
+    "file": {
+        "type": "Typ souboru",
+        "name": "Název",
+        "state": "Stav",
+        "submitted": "Odesláno dne",
+        "lastUpdate": "Poslední aktualizace",
+        "records": "záznamů"
+    }
 }

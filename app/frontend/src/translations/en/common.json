@@ -119,5 +119,14 @@
     "folderName": "Folder name",
     "createFolder": "Create folder",
     "emptyFolderName": "Please enter a folder name",
-    "you": "You"
+    "you": "You",
+    "file": {
+        "type": "File type",
+        "name": "Name",
+        "state": "State",
+        "submitted": "Submitted on",
+        "lastUpdate": "Last update",
+        "records": "records"
+    }
+
 }
