@@ -52,11 +52,11 @@ const Menu = () => {
                             </Box>
                         </Typography>
 
-                        <img src={dpLogo} alt="Azure OpenAI" />
+                        <img src={v1Logo} alt="Azure OpenAI" />
                         <Typography component="span" sx={{ fontSize: 11, m: 0.5, color: "red" }}>
                             &
                         </Typography>
-                        <img src={v1Logo} alt="Azure OpenAI" />
+                        <img src={dpLogo} alt="Azure OpenAI" />
                     </Toolbar>
                     <Box sx={{ overflow: "auto", flexGrow: 1, paddingTop: 5 }}>
                         <List>
