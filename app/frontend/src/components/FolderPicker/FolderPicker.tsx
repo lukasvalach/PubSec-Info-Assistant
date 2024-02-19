@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
 import styles from "./FolderPicker.module.css";
+import { getBlobClientUrl } from "../../api";
 
 var allowNewFolders = false;
 
@@ -83,9 +84,7 @@ export const FolderPicker = ({ allowFolderCreation, onSelectedKeyChange, preSele
 
     async function fetchBlobFolderData() {
         try {
-            // const blobClientUrl = await getBlobClientUrl();
-            const blobClientUrl =
-                "https://infoasststorelycpr.blob.core.windows.net/?se=2024-02-02T09%3A26%3A43Z&sp=rwlacu&sv=2022-11-02&ss=b&srt=sco&sig=J6yp9ZFUrEkxTOV6UScyoCWbqonitbwsJf3AX5fRVTU%3D";
+            const blobClientUrl = await getBlobClientUrl();
             const blobServiceClient = new BlobServiceClient(blobClientUrl);
             var containerClient = blobServiceClient.getContainerClient("upload");
             const delimiter = "/";

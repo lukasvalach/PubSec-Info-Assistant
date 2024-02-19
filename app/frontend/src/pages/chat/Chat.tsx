@@ -245,7 +245,7 @@ const Chat = () => {
             <Menu />
             <div className={styles.container}>
                 {!!lastQuestionRef.current && (
-                    <Box display="flex">
+                    <Box display="flex" pt={5}>
                         <Avatar src={orange} sx={{ marginLeft: 6, mr: 1.5 }}></Avatar>
                         <Box display={"block"}>
                             <Typography component="div" fontSize={14} fontWeight="bold">
@@ -343,7 +343,7 @@ const Chat = () => {
                                     </div>
                                 ))}
                                 {isLoading && (
-                                    <Box sx={{ minWidth: 1000 }}>
+                                    <Box sx={{ minWidth: 900 }}>
                                         <UserChatMessage message={lastQuestionRef.current} />
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerLoading />
@@ -351,7 +351,7 @@ const Chat = () => {
                                     </Box>
                                 )}
                                 {error ? (
-                                    <Box sx={{ minWidth: 1000 }}>
+                                    <Box sx={{ minWidth: 900 }}>
                                         <UserChatMessage message={lastQuestionRef.current} />
                                         <div className={styles.chatMessageGptMinWidth}>
                                             <AnswerError error={error.toString()} onRetry={() => makeApiRequest(lastQuestionRef.current)} />

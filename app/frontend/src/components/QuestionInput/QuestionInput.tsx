@@ -4,9 +4,9 @@
 import { Stack, TextField } from "@fluentui/react";
 import { Broom28Filled, Send24Regular } from "@fluentui/react-icons";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { RAIPanel } from "../RAIPanel";
 import styles from "./QuestionInput.module.css";
-import { useTranslation } from "react-i18next";
 
 interface Props {
     onSend: (question: string) => void;
