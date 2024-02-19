@@ -93,7 +93,7 @@ export const FolderPicker = ({ allowFolderCreation, onSelectedKeyChange, preSele
                 ? []
                 : [
                       { key: "selectAll", text: t("customize.panel.selectAll"), itemType: SelectableOptionMenuItemType.SelectAll },
-                      { key: "FolderHeader", text: t("customize.panel.folder"), itemType: SelectableOptionMenuItemType.Header }
+                      { key: "FolderHeader", text: t("customize.panel.folders"), itemType: SelectableOptionMenuItemType.Header }
                   ];
             for await (const item of containerClient.listBlobsByHierarchy(delimiter, {
                 prefix

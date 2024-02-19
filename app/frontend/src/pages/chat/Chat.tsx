@@ -244,8 +244,13 @@ const Chat = () => {
         <Box display="flex" minHeight="100vh">
             <Menu />
             <div className={styles.container}>
+                <div className={styles.commandsContainer}>
+                    {/* <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} /> */}
+                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    <InfoButton className={styles.commandButton} onClick={() => setIsInfoPanelOpen(!isInfoPanelOpen)} />
+                </div>
                 {!!lastQuestionRef.current && (
-                    <Box display="flex" pt={5}>
+                    <Box display="flex">
                         <Avatar src={orange} sx={{ marginLeft: 6, mr: 1.5 }}></Avatar>
                         <Box display={"block"}>
                             <Typography component="div" fontSize={14} fontWeight="bold">
@@ -258,11 +263,6 @@ const Chat = () => {
                     </Box>
                 )}
 
-                <div className={styles.commandsContainer}>
-                    {/* <ClearChatButton className={styles.commandButton} onClick={clearChat} disabled={!lastQuestionRef.current || isLoading} /> */}
-                    <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
-                    <InfoButton className={styles.commandButton} onClick={() => setIsInfoPanelOpen(!isInfoPanelOpen)} />
-                </div>
                 <div className={styles.chatRoot}>
                     <div className={styles.chatContainer}>
                         {!lastQuestionRef.current ? (

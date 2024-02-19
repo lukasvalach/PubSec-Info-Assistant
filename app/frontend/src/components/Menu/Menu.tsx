@@ -45,7 +45,7 @@ const Menu = () => {
                         position: "relative"
                     }}
                 >
-                    <Toolbar sx={{ display: "block", paddingTop: 5 }}>
+                    <Toolbar sx={{ display: "block", paddingTop: 6.5 }}>
                         <Typography component="div">
                             <Box fontWeight="fontWeightBold" display="inline">
                                 Databot
