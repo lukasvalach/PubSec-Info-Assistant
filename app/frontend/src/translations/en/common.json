@@ -1,15 +1,15 @@
 {
     "chat": {
         "title": "Chat with your data!",
-        "intro": "Fast, accurate and comprehensive information based on your internal documents. Databot will answer your questions, advise you and prepare customized outputs according to your specifications. Communicate with it naturally as with a colleague or your assistant.",
+        "intro": "Fast, accurate and comprehensive information based on your documents. Databot will answer questions, advise you and prepare customized outputs according to your specifications. Communicate with it naturally as with a colleague or your assistant.",
         "emptyState": {
             "simple": {
                 "title": "Simple",
-                "text": "You upload documents into the system and ask in natural language what you need to know."
+                "text": "Upload documents into the system and ask naturaly language what you need to know."
             },
             "relevant": {
                 "title": "Relevant",
-                "text": "The answers to your questions are always correct because they are based on the content of your internal documents."
+                "text": "The answers you get always correct because they are based on the content of your internal documents."
             },
             "safe": {
                 "title": "Safe",
@@ -34,9 +34,9 @@
             "responseLength": "Response length",
             "conversationType": "Conversation Type",
             "answers": {
-                "succinct": "Succinct",
+                "succinct": "Brief",
                 "standard": "Standard",
-                "thorough": "Thorough"
+                "thorough": "Comprehensive"
             },
             "conversation": {
                 "creative": "Creative",
@@ -84,7 +84,7 @@
     "agentManagement": "Agent management",
     "uploadStatus": "Upload status",
     "dropZone": "Drop your files here",
-    "browseZone": "Select a click to browse",
+    "browseZone": "or click to browse",
     "uploadDrop": "Uploaded in last:",
     "timeRange": "End time range",
     "4hours": "4 hours",

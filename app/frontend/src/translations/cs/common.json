@@ -1,7 +1,7 @@
 {
     "chat": {
         "title": "Chatujte se svými daty!",
-        "intro": "Rychlé, přesné a ucelené informace na základě vašich interních dokumentů. Databot odpoví na vaše otázky, poradí a připraví výstupy na míru dle vašeho zadání. Komunikujte s ním přirozeně jako s kolegou či svým asistentem.",
+        "intro": "Rychlé, přesné a ucelené informace na základě vašich dokumentů. Databot odpoví na otázky, poradí a připraví výstupy na míru dle vašeho zadání. Komunikujte s ním přirozeně jako s kolegou či svým asistentem.",
         "emptyState": {
             "simple": {
                 "title": "Jednoduché",
@@ -23,25 +23,25 @@
         "panel": {
             "title": "Konfigurace odpovědí",
             "agentSelection": "Výběr agenta",
-            "agentSelectionMultiple": "Výběr agenta (Vyberte více agentů)",
+            "agentSelectionMultiple": "Vyberte si agenta (klidně více agentů)",
             "upload": "Vyberte agenta pro nahrání dokumentů",
             "uploadMultiple": "Vyberte agenta pro filtrování vyhledávání",
             "newFolder": "Vytvořit nový adresář",
             "selectAll": "Vybrat vše",
             "folders": "Adresáře",
-            "documentRetrieve": "Získat z vyhledávání tento počet dokumentů",
+            "documentRetrieve": "Kolik chcete z vyhledávání získat dokumentů",
             "suggestQuestions": "Navrhování doplňujících otázek",
             "responseLength": "Délka odpovědi",
             "conversationType": "Typ konverzace",
             "answers": {
-                "succinct": "Stručný",
+                "succinct": "Stručná",
                 "standard": "Standardní",
-                "thorough": "Důkladné"
+                "thorough": "Důkladná"
             },
             "conversation": {
                 "creative": "Kreativní",
-                "balanced": "Vyvážený",
-                "precise": "Přesný"
+                "balanced": "Vyvážená",
+                "precise": "Přesná"
             },
             "tags": "Štítky",
             "tagFilter": "Štítky pro filtrování dokumentů.",
@@ -82,9 +82,9 @@
     "assistant": "Asistent",
     "agents": "Moji agenti",
     "agentManagement": "Správa agentů",
-    "uploadStatus": "Stav nahrávání",
-    "dropZone": "Své soubory můžete posílat sem nebo",
-    "browseZone": "Zvolte kliknutí pro procházení",
+    "uploadStatus": "Nahrávání souborů",
+    "dropZone": "Přetáhněte své soubory sem",
+    "browseZone": "je vyhledejte",
     "uploadDrop": "Nahráno v posledních:",
     "timeRange": "Konec časového rozmezí",
     "4hours": "4 hodiny",
