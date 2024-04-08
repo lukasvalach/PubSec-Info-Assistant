@@ -15,6 +15,7 @@ param location string
 
 param aadWebClientId string = ''
 param aadMgmtClientId string = ''
+param aadMgmtUrl string = ''
 @secure()
 param aadMgmtClientSecret string = ''
 param aadMgmtServicePrincipalId string = ''
@@ -40,8 +41,6 @@ param applicationInsightsName string = ''
 param backendServiceName string = ''
 param enrichmentServiceName string = ''
 param functionsAppName string = ''
-param mediaServiceName string = ''
-param videoIndexerName string = ''
 param searchServicesName string = ''
 param searchServicesSkuName string = 'standard'
 param storageAccountName string = ''
@@ -223,6 +222,7 @@ module enrichmentApp 'core/host/enrichmentappservice.bicep' = {
       EMBEDDING_VECTOR_SIZE: useAzureOpenAIEmbeddings ? 1536 : sentenceTransformerEmbeddingVectorSize
       AZURE_SEARCH_SERVICE_ENDPOINT: searchServices.outputs.endpoint
       WEBSITES_CONTAINER_START_TIME_LIMIT: 600
+      IS_GOV_CLOUD_DEPLOYMENT: isGovCloudDeployment
     }
   }
   dependsOn: [
@@ -279,6 +279,7 @@ module backend 'core/host/appservice.bicep' = {
       TARGET_EMBEDDINGS_MODEL: useAzureOpenAIEmbeddings ? '${abbrs.openAIEmbeddingModel}${azureOpenAIEmbeddingDeploymentName}' : sentenceTransformersModelName
       ENRICHMENT_APPSERVICE_NAME: enrichmentApp.outputs.name
       APPLICATION_TITLE: applicationtitle
+      AZURE_MANAGEMENT_URL:aadMgmtUrl
     }
     aadClientId: aadWebClientId
   }
@@ -544,30 +545,6 @@ module functions 'core/function/function.bicep' = {
     cosmosdb
     kvModule
   ]
-}
-
-// Media Service
-module media_service 'core/video_indexer/media_service.bicep' = {
-  name: 'media_service'
-  scope: rg
-  params: {
-    name: !empty(mediaServiceName) ? mediaServiceName : '${prefix}${abbrs.mediaService}${randomString}'
-    location: location
-    tags: tags
-    storageAccountID: storageMedia.outputs.id
-  }
-}
-
-// AVAM Service
-module avam 'core/video_indexer/video_indexer.bicep' = {
-  name: 'avam'
-  scope: rg
-  params: {
-    name: !empty(videoIndexerName) ? videoIndexerName : '${prefix}${abbrs.videoIndexer}${randomString}'
-    location: location
-    tags: tags
-    mediaServiceAccountResourceId: media_service.outputs.id
-  }
 }
 
 // USER ROLES
