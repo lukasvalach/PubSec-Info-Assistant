@@ -135,6 +135,7 @@ export const FileStatus = ({ className }: Props) => {
                 <Dropdown
                     label={t("uploadDrop")}
                     defaultSelectedKey="4hours"
+                    selectedKey={selectedTimeFrameItem ? selectedTimeFrameItem.key : undefined}
                     onChange={onTimeSpanChange}
                     placeholder="Select a time range"
                     options={dropdownTimespanOptions}
@@ -143,6 +144,7 @@ export const FileStatus = ({ className }: Props) => {
                 />
                 <Dropdown
                     label={t("fileStates")}
+                    selectedKey={selectedFileStateItem ? selectedFileStateItem.key : undefined}
                     defaultSelectedKey={"ALL"}
                     onChange={onFileStateChange}
                     placeholder="Select file states"
