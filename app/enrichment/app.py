@@ -331,7 +331,12 @@ def poll_queue() -> None:
             statusLog.upsert_document(blob_path, f'Embeddings process started with model {target_embeddings_model}', StatusClassification.INFO, State.PROCESSING)
         
             file_name, file_extension, file_directory  = utilities_helper.get_filename_and_extension(blob_path)
+            statusLog.upsert_document(blob_path, f'Blob Path {blob_path}', StatusClassification.INFO, State.PROCESSING)
+            statusLog.upsert_document(blob_path, f'FileName: {file_name}, FileExtension: {file_directory}, FileDirecotry {file_directory}', StatusClassification.INFO, State.PROCESSING)
+
             chunk_folder_path = file_directory + file_name + file_extension
+            statusLog.upsert_document(blob_path, f'Chunk folder Path {chunk_folder_path}', StatusClassification.INFO, State.PROCESSING)
+
             blob_service_client = BlobServiceClient.from_connection_string(ENV["BLOB_CONNECTION_STRING"])
             container_client = blob_service_client.get_container_client(ENV["AZURE_BLOB_STORAGE_CONTAINER"])
             index_chunks = []

@@ -44,6 +44,13 @@ const FilePicker = ({folderPath, tags}: Props) => {
   // whether to show the progress bar or not
   const canShowProgress = useMemo(() => files.length > 0, [files.length]);
 
+  const addTimestampToFileName = (fileName: string): string => {
+    return fileName.replace(/ /g, "_")
+    .replace(/-/g, '_')
+    .replace(/–/g, '_')
+    .replace(/(\.[\w\d_-]+)$/i, `_${Date.now()}$1`);;
+  };
+
   // execute the upload operation
   const handleUpload = useCallback(async () => {
     try {
@@ -60,7 +67,7 @@ const FilePicker = ({folderPath, tags}: Props) => {
       files.forEach(async (indexedFile: any) => {
         // add each file into Azure Blob Storage
         var file = indexedFile.file as File;
-        var filePath = (folderName == "") ? file.name : folderName + "/" + file.name;
+        var filePath = (folderName == "") ? addTimestampToFileName(file.name) : folderName + "/" + addTimestampToFileName(file.name);
         const blobClient = containerClient.getBlockBlobClient(filePath);
         // set mimetype as determined from browser with file upload control
         const options = {
