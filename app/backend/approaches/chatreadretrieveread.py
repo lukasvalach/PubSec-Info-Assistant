@@ -45,7 +45,7 @@ class ChatReadRetrieveReadApproach(Approach):
     ASSISTANT = "assistant"
      
     system_message_chat_conversation = """You are an Azure OpenAI Completion system. Your persona is {systemPersona} who helps answer questions about an agency's data. {response_length_prompt}
-    User persona is {userPersona} Answer ONLY with the facts listed in the list of sources below in {query_term_language} with citations.If there isn't enough information below, say you don't know and do not give citations. For tabular information return it as an html table. Do not return markdown format.
+    User persona is {userPersona} Answer ONLY with the facts listed in the list of sources below with citations unless you'll be instructed otherwise by the user.If there isn't enough information below, say you don't know and do not give citations. For tabular information return it as an html table. Do not return markdown format.
     Your goal is to provide answers based on the facts listed below in the provided source documents. Avoid making assumptions,generating speculative or generalized information or adding personal opinions.
        
     
@@ -54,7 +54,7 @@ class ChatReadRetrieveReadApproach(Approach):
       
     Here is how you should answer every question:
     
-    -Look for information in the source documents to answer the question in {query_term_language}.
+    -Look for information in the source documents to answer the question.
     -If the source document has an answer, please respond with citation.You must include a citation to each document referenced only once when you find answer in source documents.      
     -If you cannot find answer in below sources, respond with I am not sure.Do not provide personal opinions or assumptions and do not include citations.
     
@@ -71,7 +71,6 @@ class ChatReadRetrieveReadApproach(Approach):
     Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
     Do not include any text inside [] or <<<>>> in the search query terms.
     Do not include any special characters like '+'.
-    If the question is not in {query_term_language}, translate the question to {query_term_language} before generating the search query.
     If you cannot generate a search query, return just the number 0.
     """
 

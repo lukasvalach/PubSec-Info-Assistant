@@ -48,7 +48,7 @@ const FilePicker = ({folderPath, tags}: Props) => {
     return fileName.replace(/ /g, "_")
     .replace(/-/g, '_')
     .replace(/–/g, '_')
-    .replace(/(\.[\w\d_-]+)$/i, `_${Date.now()}$1`);;
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
   // execute the upload operation
